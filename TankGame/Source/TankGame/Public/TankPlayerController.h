@@ -16,8 +16,11 @@ class TANKGAME_API ATankPlayerController : public APlayerController
 	
 public:
 	ATank* GetControlledTank() const;
-	
+	//Start the tank moving the barrel so that a ashot would hit where the crosshair is
+	void AimTowardsCrosshair();
 protected:
+	virtual void Tick(float DeltaTime) override;
+	
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 };

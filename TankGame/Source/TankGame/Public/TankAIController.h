@@ -15,9 +15,9 @@ class TANKGAME_API ATankAIController : public AAIController
 	GENERATED_BODY()
 	
 	
-protected:
+private:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
-public:
 	ATank* GetControlledTank() const;
+	ATank* GetPlayerTank() const;
 };

@@ -18,9 +18,25 @@ public:
 	ATank* GetControlledTank() const;
 	//Start the tank moving the barrel so that a ashot would hit where the crosshair is
 	void AimTowardsCrosshair();
+	
 protected:
 	virtual void Tick(float DeltaTime) override;
 	
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
+
+private:
+	bool GetSightRayHitLocation(FVector&) const;
+	bool GetLookVectorHitLocation(FVector LookDirection, FVector& HitDirection) const;
+	bool GetLookDirection(FVector2D ScreenLocation, FVector & LookDirection) const;
+
+	UPROPERTY(EditAnywhere)
+	float CrosshairXLocation = 0.5;
+
+	UPROPERTY(EditAnywhere)
+	float CrosshairYLocation = 0.33333;
+
+	UPROPERTY(EditAnywhere)
+	float LineTraceRange = 1000000;
+
 };

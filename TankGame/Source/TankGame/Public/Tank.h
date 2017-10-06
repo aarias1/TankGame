@@ -2,9 +2,10 @@
 
 #pragma once
 
+#include "TankAimingComponent.h"
 #include "CoreMinimal.h"
 #include "GameFramework/Pawn.h"
-#include "Tank.generated.h"
+#include "Tank.generated.h"//Paste new includes above this
 
 UCLASS()
 class TANKGAME_API ATank : public APawn
@@ -17,6 +18,8 @@ public:
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
+	UTankAimingComponent* TankAimingComponent = nullptr;
+
 
 private:
 	// Sets default values for this pawn's properties
@@ -28,5 +31,5 @@ private:
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
 	
-	
+
 };

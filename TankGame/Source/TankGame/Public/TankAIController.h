@@ -19,6 +19,4 @@ private:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 	virtual void Tick(float DeltaTime) override;
-	ATank* GetControlledTank() const;
-	ATank* GetPlayerTank() const;
 };

@@ -9,6 +9,7 @@
 
 // Forward Delcaration
 class UTankBarrel; 
+class UTurret;
 
 //Holds parameters for barrel's properties and Elevate method
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
@@ -19,7 +20,11 @@ class TANKGAME_API UTankAimingComponent : public UActorComponent
 public:	
 	// Sets default values for this component's properties
 	UTankAimingComponent();
+
 	void SetBarrelReference(UTankBarrel* BarrelToSet);
+
+	//turret rotation
+	void SetTurretReference(UTurret* TurretToSet);
 
 
 	//TODO add set turret reference
@@ -33,6 +38,7 @@ protected:
 
 private:	
 	UTankBarrel* Barrel = nullptr;
+	UTurret* Turret = nullptr;
 	void MoveBarrelTowards(FVector AimDirection);
 
 		

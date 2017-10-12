@@ -15,6 +15,7 @@ void ATankAIController::Tick(float DeltaTime)
 	auto PlayerTank = Cast<ATank>(GetWorld()->GetFirstPlayerController()->GetPawn());
 	
 	if (PlayerTank) {
+		MoveToActor(PlayerTank, AcceptanceRadius);//TODO check radiusis in cm
 		ControlledTank->AimAt(PlayerTank->GetActorLocation());
 		ControlledTank->Fire(); //TODO limit fire rate
 	}

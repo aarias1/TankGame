@@ -19,4 +19,7 @@ private:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 	virtual void Tick(float DeltaTime) override;
+	
+	//how close can the AI tank approach player
+	float AcceptanceRadius = 3000;
 };

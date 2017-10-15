@@ -3,7 +3,7 @@
 #include "Tank.h"
 #include "TankBarrel.h"
 #include "Projectile.h"
-#include "TankAimingComponent.h"
+//#include "TankAimingComponent.h"
 #include "TankMovementComponent.h"
 
 // Sets default values
@@ -14,11 +14,11 @@ ATank::ATank()
 
 
 	//No need to protect pointers as added at construction
-	TankAimingComponent = CreateDefaultSubobject<UTankAimingComponent>(FName("Aiming Component"));
+	//TankAimingComponent = CreateDefaultSubobject<UTankAimingComponent>(FName("Aiming Component"));
 	//TankMovementComponent = CreateDefaultSubobject<UTankMovementComponent>(FName("Tank Movement Component"));
 	
 }
-
+/*
 void ATank::SetBarrelReference(UTankBarrel * BarrelToSet)
 {
 	TankAimingComponent->SetBarrelReference(BarrelToSet);
@@ -28,42 +28,37 @@ void ATank::SetBarrelReference(UTankBarrel * BarrelToSet)
 void ATank::SetTurretReference(UTurret * TurretToSet)
 {
 	TankAimingComponent->SetTurretReference(TurretToSet);
-}
+}*/
 
-void ATank::Fire()
-{
-	//UE_LOG(LogTemp, Warning, TEXT("FIRE"));
-	bool isReloaded = (FPlatformTime::Seconds() - LastFireTime) > ReloadTimeInSeconds;
-	if (Barrel && isReloaded) {
-		//Spawn projectile at the socket location
-		auto Projectile = GetWorld()->SpawnActor<AProjectile>(
-			ProjectileBlueprint,
-			Barrel->GetSocketLocation(FName("Projectile")),
-			Barrel->GetSocketRotation(FName("Projectile")));
 
-		Projectile->LaunchProjectile(LaunchSpeed);
-		LastFireTime = FPlatformTime::Seconds();
-	}
-}
 
 // Called when the game starts or when spawned
-void ATank::BeginPlay()
+
+/*void ATank::BeginPlay()
 {
 	Super::BeginPlay();
+
+	auto TankName = GetName();
+	UE_LOG(LogTemp, Warning, TEXT("%s DONKEY: Tank C++ Begin Play"), *TankName)
+
+	//TankAimingComponent = FindComponentByClass<UTankAimingComponent>();
 	
-}
+}*/
 
 
 // Called to bind functionality to input
+/*
 void ATank::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 
-}
+}*/
 
-
+/*
 void ATank::AimAt(FVector HitLocation) {
+	if (!ensure(TankAimingComponent)) { return; }
 	TankAimingComponent->AimAt(HitLocation, LaunchSpeed);
-	auto OurTankName = GetName();
+	//auto OurTankName = GetName();
 	//UE_LOG(LogTemp, Warning, TEXT("%s aiming at %s"), *OurTankName, *HitLocation.ToString());
 }
+*/

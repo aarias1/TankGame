@@ -8,33 +8,35 @@
 #include "Tank.generated.h"//Paste new includes above this
 class UTankBarrel; // Forward Delcaration
 class UTurret;
-class UTankAimingComponent;
-class AProjectile;
-class UTankMovementComponent;
+//class UTankAimingComponent;
+//class AProjectile;
+//class UTankMovementComponent;
 UCLASS()
 class TANKGAME_API ATank : public APawn
 {
 	GENERATED_BODY()
 
 public:
-	void AimAt(FVector HitLocation);
-
+	
+	/*
 	UFUNCTION(BlueprintCallable, Category = Setup)
 	void SetBarrelReference(UTankBarrel* BarrelToSet);
 
 	UFUNCTION(BlueprintCallable, Category = Setup)
 	void SetTurretReference(UTurret* TurretToSet);
+	*/
 
-	UFUNCTION(BlueprintCallable, Category = Setup)
-	void Fire();
+	
 
 protected:
 	// Called when the game starts or when spawned
-	virtual void BeginPlay() override;
-	UTankAimingComponent* TankAimingComponent = nullptr;
+	//virtual void BeginPlay() override;
 
-	UPROPERTY(BlueprintReadOnly)
-	UTankMovementComponent* TankMovementComponent = nullptr;
+	/*UPROPERTY(BlueprintReadOnly)
+	UTankAimingComponent* TankAimingComponent = nullptr;*/
+
+	//UPROPERTY(BlueprintReadOnly)
+	//UTankMovementComponent* TankMovementComponent = nullptr;
 
 
 private:
@@ -42,19 +44,9 @@ private:
 	ATank();
 
 	// Called to bind functionality to input
-	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+	//virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
-	UPROPERTY(EditDefaultsOnly, Category = Firing)
-	float LaunchSpeed = 4000; //Sensible starting value of 1000 m/s
+	
 
-	UPROPERTY(EditDefaultsOnly, Category = Setup)
-	TSubclassOf<AProjectile> ProjectileBlueprint;
-
-	//Local barrel reference for spawning projectile
-	UTankBarrel* Barrel = nullptr;
-
-	UPROPERTY(EditDefaultsOnly, Category = Setup)
-	float ReloadTimeInSeconds = 3;
-
-	double LastFireTime = 0;
+	
 };

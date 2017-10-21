@@ -101,6 +101,11 @@ void UTankAimingComponent::AimAt(FVector HitLocation) {
 	//UE_LOG(LogTemp, Warning, TEXT("%s aiming at %s from %s at speed %f"), *OurTankName, *HitLocation.ToString(), *BarrelLocation, LaunchSpeed);
 }
 
+EFiringState UTankAimingComponent::GetFiringState() const
+{
+	return FiringState;
+}
+
 void UTankAimingComponent::MoveBarrelTowards(FVector AimDirection) 
 {
 	if (!ensure(Barrel) || !ensure(Turret)) { return; }
@@ -111,7 +116,15 @@ void UTankAimingComponent::MoveBarrelTowards(FVector AimDirection)
 	//UE_LOG(LogTemp, Warning, TEXT("AimAsRotator: %s"), *AimAsRotator.ToString());
 	//move the barrel the right amount this frame
 	Barrel->Elevate(DeltaRotator.Pitch); //TODO remove magic number
-	Turret->Rotate(DeltaRotator.Yaw);
+	//always yaw the shortest distance
+	if (FMath::Abs(DeltaRotator.Yaw) < 180) {
+		Turret->Rotate(DeltaRotator.Yaw);
+	}
+	else 
+	{
+		Turret->Rotate(-DeltaRotator.Yaw);
+	}
+	
 	//Turret->Rotate(1);
 	//given a max elevation speed, and the frame time
 }

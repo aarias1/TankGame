@@ -42,6 +42,9 @@ public:
 
 	//void AimAt(FVector HitLocation, float LaunchSpeed);
 	void AimAt(FVector HitLocation);
+
+	EFiringState GetFiringState() const;
+
 protected:
 	// Called when the game starts
 	virtual void BeginPlay() override;
